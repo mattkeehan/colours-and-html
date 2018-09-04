@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Colours</title>
+    <script src="colours.js"></script>
+</head>
+<body>
+    <p>Colours example, works in Edge, Chrome 41+, FF 34+.<br>
+    Updates the box and text below when 6 digits in hex format (as shown in placeholder text) are entered in each</p>
+
+    <p>
+        <b>Colour 1</b>
+        <input id="colourA" placeholder="112233" />
+    </p>
+
+    <p>
+        <b>Colour 2</b>
+        <input id="colourB" placeholder="112233" />
+    </p>
+
+    <p>
+        Result colour: <span id="colourText">...</span>
+        <div id="calculatedColour" style="width:100px; height:100px; background-color:black">&nbsp;</div>
+    </p>
+</body>
+
+<script>
+    ['colourA', 'colourB'].forEach(input => {
+        document.getElementById(input).addEventListener('keyup', () => {
+
+            if (document.getElementById('colourA').value.length !== 6 ||
+                document.getElementById('colourB').value.length !== 6) return;
+
+            const calculateColour =
+                colours(document.getElementById('colourA').value, document.getElementById('colourB').value);
+
+            document.getElementById('calculatedColour').style.backgroundColor = `#${calculateColour}`;
+            document.getElementById('colourText').innerText = `#${calculateColour}`;
+        });
+    });
+</script>
+</html>

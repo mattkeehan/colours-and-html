@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>HTML Arrays demo</title>
+	<script src="html-arrays.js"></script>
+</head>
+<body>
+	<p>'HTML arrays' example, works in Edge, Chrome 41+, FF 34+.<br>
+		Updates a block of HTML underneath the input, where you can enter an array as a comma-delimited string with square brackets, as shown in the placeholder</p>
+
+	<p>
+		<b>Array</b>
+		<input id="htmlArr" placeholder="['b', 'some text']" />
+	</p>
+
+	<p>
+		Result HTML:
+		<div id="generatedHtml" style="border:1px dotted; min-height:100px; max-width:70%">
+
+		</div>
+	</p>
+</body>
+
+<script>
+	const makeArrayFromString = str => JSON.parse(str.replace(/'/g , '"'));
+	let userArray;
+
+	document.getElementById('htmlArr').addEventListener('keyup', event => {
+		try {
+			userArray = makeArrayFromString(event.target.value);
+			document.getElementById('generatedHtml').innerHTML = getHtmlString(userArray);
+		} catch (error) {}
+	});
+</script>
+</html>
