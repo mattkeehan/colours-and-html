@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Colours</title>
-    <script src="colours.js"></script>
 </head>
 <body>
     <p>Colours example, works in Edge, Chrome 41+, FF 34+.<br>
@@ -16,24 +15,24 @@
 
     <p>
         <b>Colour 2</b>
-        <input id="colourB" placeholder="112233" />
+        <input id="colourB" placeholder="112240" />
     </p>
 
     <p>
         Result colour: <span id="colourText">...</span>
-        <div id="calculatedColour" style="width:100px; height:100px; background-color:black">&nbsp;</div>
+        <div id="calculatedColour" style="width:100px; height:100px; background-color:black"></div>
     </p>
 </body>
 
+<script src="colours.js"></script>
 <script>
+    const colourA = document.getElementById('colourA');
+    const colourB = document.getElementById('colourB');
+
     ['colourA', 'colourB'].forEach(input => {
         document.getElementById(input).addEventListener('keyup', () => {
-
-            if (document.getElementById('colourA').value.length !== 6 ||
-                document.getElementById('colourB').value.length !== 6) return;
-
-            const calculateColour =
-                colours(document.getElementById('colourA').value, document.getElementById('colourB').value);
+            if (colourA.value.length !== 6 || colourB.value.length !== 6) return;
+            const calculateColour = colours(colourA.value, colourB.value);
 
             document.getElementById('calculatedColour').style.backgroundColor = `#${calculateColour}`;
             document.getElementById('colourText').innerText = `#${calculateColour}`;

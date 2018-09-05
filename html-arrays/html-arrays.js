@@ -9,7 +9,7 @@ const getHtmlString = inputArray => {
 	let htmlStartString = '';
 	let htmlEndString = '';
 
-	if (inputArray.length === 1) return `<${inputArray[0]}/>`
+	if (inputArray.length === 1) return `<${inputArray[0]}/>`;
 
 	inputArray.forEach((item, index) => {
 		if (index === 0) {

@@ -1,9 +1,6 @@
 'use strict';
 
-const pad = numberString => {
-    while (numberString.length < 2) { numberString = '0' + numberString; }
-    return numberString;
-};
+const padZero = numberString => (numberString.length < 2) ? '0' + numberString : numberString;
 
 /**
  *
@@ -15,7 +12,7 @@ const colours = (col1, col2) => {
     const colourSetOne = col1.match(/.{1,2}/g).map(colour => parseInt(colour, 16));
     const colourSetTwo = col2.match(/.{1,2}/g).map(colour => parseInt(colour, 16));
     const calculatedColourSet = [0, 1, 2].map(num =>
-        pad((Math.floor((colourSetOne[num] + colourSetTwo[num]) / 2)).toString(16)));
+        padZero((Math.round((colourSetOne[num] + colourSetTwo[num]) / 2)).toString(16)));
 
     return calculatedColourSet.join('');
 };

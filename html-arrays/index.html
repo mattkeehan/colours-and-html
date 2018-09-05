@@ -3,7 +3,6 @@
 <head>
 	<meta charset="UTF-8">
 	<title>HTML Arrays demo</title>
-	<script src="html-arrays.js"></script>
 </head>
 <body>
 	<p>'HTML arrays' example, works in Edge, Chrome 41+, FF 34+.<br>
@@ -22,6 +21,7 @@
 	</p>
 </body>
 
+<script src="html-arrays.js"></script>
 <script>
 	const makeArrayFromString = str => JSON.parse(str.replace(/'/g , '"'));
 	let userArray;
@@ -30,7 +30,7 @@
 		try {
 			userArray = makeArrayFromString(event.target.value);
 			document.getElementById('generatedHtml').innerHTML = getHtmlString(userArray);
-		} catch (error) {}
+		} catch (error) {}//don't log errors from un-JSON-able strings
 	});
 </script>
 </html>
